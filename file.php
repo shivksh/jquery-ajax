@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1 id="heading"> Subject Choosing Form </h1>
-    <form action="data.php" method="post" enctype="multipart/form-data" >
+    <form action="" method="" enctype="multipart/form-data" >
 
         <label for="">Class Id</label>
         <input type="text" id="class" name="class"><br>
@@ -31,7 +31,7 @@
 
         
 
-        <input type="file" name="image" id="image" name="image" ><br>
+        <input type="file"  id="image" name="image" ><br>
         <img id="blah" src="#" alt="your image" width="100px" height="100px" />
         
         <h5 id="filedata"></h5>
@@ -41,11 +41,11 @@
         <div class="science">
        <input type="radio" id="science" name="sub" value="Science">
        <label for="">Science</label><br>
-        <input type="checkbox" id="sci" name="scc[]"  value="Physics">
+        <input type="checkbox" id="check" name="scc[]"  value="Physics">
         <label for=""> Physics</label><br>
-        <input type="checkbox" id="sci" name="scc[]"  value="Chemistry">
+        <input type="checkbox" id="check" name="scc[]"  value="Chemistry">
         <label for=""> Chemistry</label><br>
-        <input type="checkbox" id="sci" name="scc[]"  value="Biology">
+        <input type="checkbox" id="check" name="scc[]"  value="Biology">
         <label for=""> Biology</label><br><br>
        </div>
 
@@ -55,11 +55,11 @@
        <div class="commerce">   
        <input type="radio" id="commerce" name="sub" value="Commerce">
        <label for="">Commerce</label><br>
-        <input type="checkbox" id="com" name="scc[]"  value="Accounts">
+        <input type="checkbox" id="check" name="scc[]"  value="Accounts">
         <label for=""> Accounts</label><br>
-        <input type="checkbox" id="com" name="scc[]"  value="Business">
+        <input type="checkbox" id="check" name="scc[]"  value="Business">
         <label for=""> Bussiness</label><br>
-        <input type="checkbox" id="com" name="scc[]"  value="Banking">
+        <input type="checkbox" id="check" name="scc[]"  value="Banking">
         <label for=""> Banking</label><br><br>
        </div>
 

@@ -123,10 +123,10 @@ function radio_validate(){
 
 }
 
-function check_validate(){
-var select = $('input[type="checkbox"]:checked');
-if(select.length>=2){
-    return true;
+function check_validate(insert){
+    // var select = $('input[type="checkbox"]:checked');
+   if(insert.length>=2){
+     return true;
 }
 else{
     $('#check').text('**Atleast select 2 subjects');
@@ -136,15 +136,24 @@ else{
 }
 
 $("form").submit(function(event){
+    event.preventDefault();
 
+var insert=[];
+if($("#check").each(function(){
+
+    if($(this).is(":checked")){
+        insert.push($(this).val());
+    }
+}));
+insert=insert.toString();
 
 var phone = $("#pname").val();
 var clas = $("#class").val();
 var fname = $("#fname").val();
 var lname = $("#lname").val();
-var image = $("#image").val();
-
-
+var p = document.getElementById('image').files[0];
+var form_data = new FormData();
+form_data.append("image", p ); 
 
 var phone_check=true;
 var clas_check=true;
@@ -163,41 +172,46 @@ var radio_check=true;
     // fname_validate(fname);
     // class_validate(clas);
     // phone_validate(phone);
-    if( phone_validate(phone)
-    &&  class_validate(clas)
+    if(   class_validate(clas)
+    &&  fname_validate(fname)
     &&  lname_validate(lname)
+    && phone_validate(phone)
     &&  image_validate(image) 
     &&  radio_validate()
-    &&  fname_validate(fname)
-    &&  check_validate()
+    
+    &&  check_validate(insert)
     ){
 
-var that = $(this),
-url=$(this).attr('action'),
-type=$(this).attr('method'),
-data={};
+// var that = $(this),
+// url=$(this).attr('action'),
+// type=$(this).attr('method'),
+// data={};
 
-that.find('[name]').each(function(index,value){
-var that = $(this),
-name=that.attr('name'),
-value=that.val();
-data[name] = value;
+// that.find('[name]').each(function(index,value){
+// var that = $(this),
+// name=that.attr('name'),
+// value=that.val();
+// data[name] = value;
 
-});
+// });
         $.ajax({
-            url:url,
-            type:type,
-            data:data,
-            success:function(response)
+            url:"data.php",
+            type:"POST",
+            // data:form_data,
+            data:{first:fname,lname:lname,pname:phone,class:clas,insert:insert},
+            // contentType:false,
+            // cache:false,
+            // processData:false,
+            success:function(data)
             {
-                if(response)
-                {
-                    console.log('yes');
-                }
-                else
-                {
-                    console.log('else statement');
-                }
+                // if(data)
+                // {
+                    $("#ldata").html(data);
+                // }
+                // else
+                // {
+                //     console.log('else statement');
+                // }
             }
         });
         return false;        
